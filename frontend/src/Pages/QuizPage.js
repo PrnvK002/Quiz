@@ -16,7 +16,7 @@ export const QuizPage = () => {
     const [selectedOption,setSelected] = useState();
     const [ answerData , setAnswer ] = useState([]);
     const quizData = useSelector((state) => state.quizReducer);
-    const { questions , loading , error } = quizData; 
+    const { questions , loading , error , retry } = quizData; 
 
     //======== setting modal for player name input ====
     const [show,setShow] = useState(false);
@@ -43,7 +43,7 @@ export const QuizPage = () => {
     //================================================
     useEffect(() => {
         handleShow();
-        dispatch(getQuestions(1));
+        dispatch(getQuestions(retry));
     },[dispatch])
 
     useEffect(() => {

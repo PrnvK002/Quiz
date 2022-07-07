@@ -28,6 +28,7 @@ const quizReducer = createSlice({
     initialState : {
         questions : [],
         result : {},
+        retry:1,
         loading : false,
         error : ''
     },
@@ -35,6 +36,8 @@ const quizReducer = createSlice({
         clearData : (state,action) => {
             state.questions = [];
             state.result = {};
+            let no = state.retry;
+            state.retry = no + 1;
         }
    },
     extraReducers : {

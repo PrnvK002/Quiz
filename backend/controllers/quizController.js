@@ -7,7 +7,9 @@ import quiz from "../models/quiz.js";
 
 export const getQuestions = async(req,res) => {
     try{
-        const questionData = await questions.find({}).skip().limit(10);
+        let number = req.query.setNo;
+        let skip = (number -1) *10;
+        const questionData = await questions.find({}).skip(skip).limit(10);
         if(questionData.length){
             res.status(200).json({ questionData });
         }else{
